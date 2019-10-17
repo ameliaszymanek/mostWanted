@@ -13,6 +13,7 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
+      searchByTraits(person)
       break;
       default:
     app(people); // restart app
@@ -73,8 +74,8 @@ function searchByName(people){
   return foundPerson;
 }
 
-function searchByTraits(person){
-  
+function searchByTraits(people){
+
 }
 
 // alerts a list of people
