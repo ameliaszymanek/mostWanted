@@ -33,11 +33,12 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " " + "Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'.");
 
   switch(displayOption){
     case "info":
     // TODO: get person's info
+    displayPerson(person)
     break;
     case "family":
     // TODO: get person's family
@@ -56,8 +57,8 @@ function mainMenu(person, people){
 }
 
 function searchByName(people){
-  let firstName = promptFor("What is the person's first name?", chars);
-  let lastName = promptFor("What is the person's last name?", chars);
+  let firstName = promptFor("What is the person's first name? Capitalize the first letter of their first name.", chars);
+  let lastName = promptFor("What is the person's last name? Capitalize the first letter of their last name.", chars);
 
   let foundPerson = people.filter(function(person){
     if(person.firstName === firstName && person.lastName === lastName){
@@ -67,8 +68,13 @@ function searchByName(people){
       return false;
     }
   })
-  // TODO: find the person using the name they entered
+//TODO find the person using the name they entered
+//Brett says do something here- return foundPerson isn't enough
   return foundPerson;
+}
+
+function searchByTraits(person){
+  
 }
 
 // alerts a list of people
@@ -81,16 +87,29 @@ function displayPeople(people){
 function displayPerson(person){
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
-  let personInfo = "First Name: " + person.firstName + "\n";
-  personInfo += "Last Name: " + person.lastName + "\n";
-  // TODO: finish getting the rest of the information to display
+  let personInfo = "First Name: " + person[0].firstName + "\n";
+  personInfo += "Last Name: " + person[0].lastName + "\n";
+  personInfo += "Gender: " + person[0].gender + "\n";
+  personInfo += "Date of birth: " + person[0].dob + "\n";
+  personInfo += "Height: " + person[0].height + "\n";
+  personInfo += "Weight: " + person[0].weight + "\n";
+  personInfo += "Eye Color: " + person[0].eyeColor + "\n";
+  personInfo += "Occupation: " + person[0].occupation + "\n";
+
   alert(personInfo);
+}
+function displayDescendants(person){
+  let personInfo = "ID: " + person.id + "\n";
+  if(personInfo == data.parents){
+    return displayDescendants();
+  }
 }
 
 // function that prompts and validates user input
 function promptFor(question, valid){
+  let response;
   do{
-    let response = prompt(question).trim();
+    response = prompt(question).trim();
   } while(!response || !valid(response));
   return response;
 }
