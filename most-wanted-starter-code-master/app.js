@@ -75,7 +75,7 @@ function searchByName(people){
 }
 
 function searchByTraits(people){
-  let displayOption = promptFor("By which trait would you like to search? Examples are 'gender', 'height', 'weight', 'eye color', or 'occupation'.", chars);
+  let displayOption = promptFor("By which trait would you like to search? Examples are 'gender', 'height', 'weight', 'eye color', or 'occupation'. If you would like to go back and search a name type 'restart' or type 'quit' to quit.", chars);
   let foundPerson = people.filter(function(person){
 
     switch(displayOption){
@@ -103,8 +103,9 @@ function searchByTraits(people){
       case "quit":
       return;
       default:
-      return mainMenu(person, people);
+      
     }
+    return searchByTraits(people);
   })
 
 
