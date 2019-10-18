@@ -189,6 +189,13 @@ function searchByOccupation(people){
   return foundPerson;
 
 }
+function findSiblings(people){
+  let foundPerson = people.filter(function(people){
+  if(people.id === id){
+
+  }
+  
+}
 
 
 // alerts a list of people
