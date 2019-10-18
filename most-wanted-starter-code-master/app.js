@@ -82,26 +82,29 @@ function searchByTraits(people){
       case "gender":
       let genderResults = searchByGender(people);
       displayPeople(genderResults);
-      //break;
+      break;
       case "height":
       let heightResults = searchByHeight(people);
       displayPeople(heightResults);
-      //break;
+      break;
       case "weight":
       let weightResults = searchByWeight(people);
       displayPeople(weightResults);
-      //break;
+      break;
       case "eye color":
       let eyeColorResults = searchByEyeColor(people);
       displayPeople(eyeColorResults);
-      //break;
+      break;
       case "occupation":
       let occupationResults = searchByOccupation(people);
       displayPeople(occupationResults);
+      case "restart":
+      app(people);
+      case "quit":
+      return;
       default:
-      return searchByTraits(people);
+      return mainMenu(person, people);
     }
-    
   })
 
 
