@@ -74,44 +74,45 @@ function searchByName(people){
   return foundPerson;
 }
 
-function searchByTraits(people){
-  let displayOption = promptFor("By which trait would you like to search? Examples are 'gender', 'height', 'weight', 'eye color', or 'occupation'. If you would like to go back and search a name type 'restart' or type 'quit' to quit.", chars);
-  let foundPerson = people.filter(function(person){
+function searchByMultipleTraits(people){
 
+}
+
+
+function searchByTraits(people){
+  let filterResults = people;
+  while(filterResults.length > 1){
+  let displayOption = promptFor("By which trait would you like to search? Examples are 'gender', 'height', 'weight', 'eye color', or 'occupation'. If you would like to go back and search a name type 'restart' or type 'quit' to quit.", chars);
+  
     switch(displayOption){
-      case "gender":
-      let genderResults = searchByGender(people);
-      displayPeople(genderResults);
+      case "gender": 
+      filterResults = searchByGender(filterResults);
+      displayPeople(filterResults);
       break;
       case "height":
-      let heightResults = searchByHeight(people);
-      displayPeople(heightResults);
+      filterResults = searchByHeight(filterResults);
+      displayPeople(filterResults);
       break;
       case "weight":
-      let weightResults = searchByWeight(people);
-      displayPeople(weightResults);
+      filterResults = searchByWeight(filterResults);
+      displayPeople(filterResults);
       break;
       case "eye color":
-      let eyeColorResults = searchByEyeColor(people);
-      displayPeople(eyeColorResults);
+      filterResults = searchByEyeColor(filterResults);
+      displayPeople(filterResults);
       break;
       case "occupation":
-      let occupationResults = searchByOccupation(people);
-      displayPeople(occupationResults);
+      filterResults = searchByOccupation(filterResults);
+      displayPeople(filterResults);
       case "restart":
-      app(people);
+      return searchByTraits(people);
       case "quit":
-      return;
+      return app(people);
       default:
       
-    }
-    return searchByTraits(people);
-  })
-
-
-
-  return foundPerson(foundPerson, searchByGender);
-
+    } 
+  }
+  return filterResults;
 }
 
   function searchByGender(people){
@@ -236,3 +237,5 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
+
+//if statement and filter for ID to name
