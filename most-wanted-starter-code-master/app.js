@@ -195,6 +195,12 @@ function displayPeople(people){
   }).join("\n"));
 }
 
+function getNamesofMultiplePeople(people){
+  people.map(function(person){
+    return person.firstName + " " + person.lastName;
+  }).join("\n");
+}
+
 function displayPerson(person){
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
@@ -224,17 +230,18 @@ function displayFamilyMembers(person, people){
   personFamilyInfo += "Spouse: " + idToName(person[0].currentSpouse, people) + "\n";
   
   //display siblings
-  personFamilyInfo += "Siblings: " + idToName
+  personFamilyInfo += "Siblings: " + getNamesofMultiplePeople(findSiblings(person, people));
+
   alert(personFamilyInfo);
 }
 
 
-// function displayDescendants(person){
-//   let personInfo = "ID: " + person.id + "\n";
-//   if(personInfo == data.parents){
-//     return displayDescendants();
-//   }
-// }
+function displayDescendants(person){
+  let personInfo = "ID: " + person.id + "\n";
+  if(personInfo == data.parents){
+    return displayDescendants();
+  }
+}
 
   
 function findSiblings(person, people){
