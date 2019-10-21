@@ -43,7 +43,7 @@ let displayOption = prompt("Found " + person[0].firstName + " " + person[0].last
     break;
     case "family":
     // TODO: get person's family
-    displayFamilyMembers(person)
+    displayFamilyMembers(person, people);
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -216,32 +216,41 @@ function displayPerson(person){
   alert(personInfo);
 }
 
-function displayFamilyMembers(person){
-  
-  
-}
+function displayFamilyMembers(person, people){
+  let personFamilyInfo = person[0].firstName + person[0].lastName + "\n";
+  if (person[0].parents.length > 1){
+    personFamilyInfo += "Parent(s): " + idToName(person[0].parents[0], people) + " " + idToName(person[0].parents[1], people) + "\n";
 
+  }else {
+    personFamilyInfo += "Parent(s): " + idToName(person[0].parents[0], people) + "\n";
 
-function displayDescendants(person){
-  let personInfo = "ID: " + person.id + "\n";
-  if(personInfo == data.parents){
-    return displayDescendants();
   }
-}
-
-function displayParents(person){
-  let personFamilyInfo = person[0].firstName + person[0].lastName + "\n";
-  //print persons parents (changing id to name)
-  personFamilyInfo += "Parent(s): " + person[0].parents + "\n";
+  personFamilyInfo += "Spouse: " + idToName(person[0].currentSpouse, people) + "\n";
+  
   alert(personFamilyInfo);
 }
 
-function displaySpouse(person){
-  let personFamilyInfo = person[0].firstName + person[0].lastName + "\n";
-  //print persons spouse (changing id to name)
-  personFamilyInfo += "Spouse: " + person[0].spouse + "\n";
-  alert(personFamilyInfo);
-}
+
+// function displayDescendants(person){
+//   let personInfo = "ID: " + person.id + "\n";
+//   if(personInfo == data.parents){
+//     return displayDescendants();
+//   }
+// }
+
+// function displayParents(person){
+//   let personFamilyInfo = person[0].firstName + person[0].lastName + "\n";
+//   //print persons parents (changing id to name)
+//   personFamilyInfo += "Parent(s): " + person[0].parents + "\n";
+//   alert(personFamilyInfo);
+// }
+
+// function displaySpouse(person){
+//   let personFamilyInfo = person[0].firstName + person[0].lastName + "\n";
+//   //print persons spouse (changing id to name)
+//   personFamilyInfo += "Spouse: " + person[0].spouse + "\n";
+//   alert(personFamilyInfo);
+// }
   
 //  function displaySiblings(person){
 //   let personFamilyInfo = person[0].firstName + person[0].lastName + "\n";
@@ -251,19 +260,29 @@ function displaySpouse(person){
 
 
 
+function idToName(id, people){
+    let foundPerson = people.filter(function(person){
+      if(person.id === id){
+        return true;
+      }
+      else{
+        return false;
+    }
+  });
+  return foundPerson[0].firstName + " " + foundPerson[0].lastName;
+}
 
-
-// function idToName(people){
-//   let id = [];
-//   let foundPerson = people.filter(function(people){
-//     if(people.id === id){
+// function idToName(person){
+//   let id = 
+//   let foundPerson = person.filter(function(person){
+//     if(person.id === id){
 //       return true;
 //     }
 //     else{
 //       return false;
 //   }
 // }) 
-// return displayPeople(foundPerson);
+// return foundPerson;
 // }
 
 
