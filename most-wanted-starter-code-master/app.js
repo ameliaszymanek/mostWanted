@@ -185,13 +185,7 @@ function searchByOccupation(people){
   return foundPerson;
 
 }
-// function findSiblings(people){
-//   let foundPerson = people.filter(function(people){
-//   if(people.id === id){
 
-//   }
-  
-// }
 
 
 // alerts a list of people
@@ -227,10 +221,10 @@ function displayFamilyMembers(person, people){
     personFamilyInfo += "Parent(s): no parents in data"  + "\n";
   }
   
-
-
   personFamilyInfo += "Spouse: " + idToName(person[0].currentSpouse, people) + "\n";
   
+  //display siblings
+  personFamilyInfo += "Siblings: " + idToName
   alert(personFamilyInfo);
 }
 
@@ -243,11 +237,17 @@ function displayFamilyMembers(person, people){
 // }
 
   
-//  function displaySiblings(person){
-//   let personFamilyInfo = person[0].firstName + person[0].lastName + "\n";
-//   personFamilyInfo += ""
-//   alert(personFamilyInfo);
-//  }
+function findSiblings(person, people){
+  let siblings = people.filter(function(person){
+    if(person.parents != [] && person.parents.includes(people[i].parents){
+      return true;
+    }
+    else {
+      return false;
+    }
+  });
+  return siblings;
+}
 
 
 
