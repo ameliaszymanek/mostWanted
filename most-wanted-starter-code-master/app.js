@@ -238,8 +238,8 @@ function displayFamilyMembers(person, people){
 
   
 function findSiblings(person, people){
-  let siblings = people.filter(function(person){
-    if(person.parents != [] && person.parents.includes(people[i].parents){
+  let siblings = people.filter(function(potentialSibling){
+    if(person.id != potentialSibling.id && (person.parents.includes(potentialSibling.parents[0]) || person.parents.includes(potentialSibling.parents[1]))){
       return true;
     }
     else {
