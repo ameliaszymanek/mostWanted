@@ -43,6 +43,7 @@ let displayOption = prompt("Found " + person[0].firstName + " " + person[0].last
     break;
     case "family":
     // TODO: get person's family
+    displayFamilyMembers(person)
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -73,11 +74,6 @@ function searchByName(people){
 //Brett says do something here- return foundPerson isn't enough
   return foundPerson;
 }
-
-function searchByMultipleTraits(people){
-
-}
-
 
 function searchByTraits(people){
   let filterResults = people;
@@ -189,13 +185,13 @@ function searchByOccupation(people){
   return foundPerson;
 
 }
-function findSiblings(people){
-  let foundPerson = people.filter(function(people){
-  if(people.id === id){
+// function findSiblings(people){
+//   let foundPerson = people.filter(function(people){
+//   if(people.id === id){
 
-  }
+//   }
   
-}
+// }
 
 
 // alerts a list of people
@@ -219,12 +215,58 @@ function displayPerson(person){
 
   alert(personInfo);
 }
+
+function displayFamilyMembers(person){
+  
+  
+}
+
+
 function displayDescendants(person){
   let personInfo = "ID: " + person.id + "\n";
   if(personInfo == data.parents){
     return displayDescendants();
   }
 }
+
+function displayParents(person){
+  let personFamilyInfo = person[0].firstName + person[0].lastName + "\n";
+  //print persons parents (changing id to name)
+  personFamilyInfo += "Parent(s): " + person[0].parents + "\n";
+  alert(personFamilyInfo);
+}
+
+function displaySpouse(person){
+  let personFamilyInfo = person[0].firstName + person[0].lastName + "\n";
+  //print persons spouse (changing id to name)
+  personFamilyInfo += "Spouse: " + person[0].spouse + "\n";
+  alert(personFamilyInfo);
+}
+  
+//  function displaySiblings(person){
+//   let personFamilyInfo = person[0].firstName + person[0].lastName + "\n";
+//   personFamilyInfo += ""
+//   alert(personFamilyInfo);
+//  }
+
+
+
+
+
+// function idToName(people){
+//   let id = [];
+//   let foundPerson = people.filter(function(people){
+//     if(people.id === id){
+//       return true;
+//     }
+//     else{
+//       return false;
+//   }
+// }) 
+// return displayPeople(foundPerson);
+// }
+
+
 
 // function that prompts and validates user input
 function promptFor(question, valid){
