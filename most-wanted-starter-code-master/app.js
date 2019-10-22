@@ -47,6 +47,7 @@ let displayOption = prompt("Found " + person[0].firstName + " " + person[0].last
     break;
     case "descendants":
     // TODO: get person's descendants
+    displayDescendants(person);
     break;
     case "restart":
     app(people); // restart
@@ -239,14 +240,15 @@ function displayFamilyMembers(person, people){
 function displayDescendants(person){
   let personInfo = "ID: " + person.id + "\n";
   if(personInfo == data.parents){
-    return displayDescendants();
+     displayDescendants();
   }
 }
 
-  
+
+
 function findSiblings(person, people){
   let siblings = people.filter(function(potentialSibling){
-    if(person.id != potentialSibling.id && (person.parents.includes(potentialSibling.parents[0]) || person.parents.includes(potentialSibling.parents[1]))){
+    if(person.id != potentialSibling.id && (person.includes(potentialSibling.parents[0]) || person.includes(potentialSibling.parents[1]))){
       return true;
     }
     else {
