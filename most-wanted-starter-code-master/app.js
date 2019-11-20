@@ -9,7 +9,7 @@ function app(people){
   let searchResults;
   switch(searchType){
     case 'yes':
-      searchResults = searchByName(people);
+      searchResults = searchByName(people);     
       break;
     case 'no':
       // TODO: search by traits
@@ -62,14 +62,12 @@ let displayOption = prompt("Found " + person[0].firstName + " " + person[0].last
 function searchByName(people){
   let firstName = promptFor("What is the person's first name? Capitalize the first letter of their first name.", chars);
   let lastName = promptFor("What is the person's last name? Capitalize the first letter of their last name.", chars);
-
   let foundPerson = people.filter(function(person){
     if(person.firstName === firstName && person.lastName === lastName){
       return true;
     }
     else{
-      alert("Person not found. Please try another name.")
-      searchByName(people);
+      return false;
     }
   })
 ////TODO find the person using the name they entered
@@ -115,7 +113,7 @@ function searchByTraits(people){
 
   function searchByGender(people){
     let gender = promptFor("What is their gender?", chars);
-
+  
     let foundPerson = people.filter(function(people){
       if (people.gender === gender){
         return true;
