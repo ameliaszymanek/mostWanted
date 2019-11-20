@@ -68,7 +68,8 @@ function searchByName(people){
       return true;
     }
     else{
-      return false;
+      alert("Person not found. Please try another name.")
+      searchByName(people);
     }
   })
 ////TODO find the person using the name they entered
@@ -106,7 +107,7 @@ function searchByTraits(people){
       case "quit":
       return app(people);
       default:
-      
+      searchByTraits(people);
     } 
   }
   return filterResults;
